@@ -1,0 +1,4 @@
+{
+  "presets": ["react-app"],
+  "plugins": [["import", { "libraryName": "antd-mobile", "style": "css" }], ["styled-jsx/babel", { "optimizeForSpeed": true }], "@babel/plugin-proposal-optional-chaining"]
+}

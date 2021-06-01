@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// @flow
+import 'react-app-polyfill/stable';
+import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import ErrorBoundary from '@/errorboundary';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Container = (WrapConpoment) =>
+  class extends Component {
+    render() {
+      return <WrapConpoment {...this.props} />;
+    }
+  };
+
+const renderPage = (component) => {
+  ReactDOM.render(<ErrorBoundary>{React.createElement(Container(component))}</ErrorBoundary>, document.getElementById('root'));
+};
+if (module.hot) {
+  module.hot.accept();
 }
-
-export default App;
+export { renderPage };
